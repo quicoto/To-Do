@@ -14,8 +14,8 @@
 	<footer id="colophon" class="site-footer bg-dark text-white">
 		<section class="container pt-4 pb-4">
 			<div class="site-info row">
-				<div class="col-xs-12 col-sm-6 text-center text-sm-left">Powered by WordPress</div>
-				<div class="col-xs-12 col-sm-6 text-center text-sm-right">To Do Theme by Ricard Torres</div>
+				<div class="col-12 col-sm-6 text-center text-sm-left">Powered by WordPress</div>
+				<div class="col-12 col-sm-6 text-center text-sm-right">To Do Theme by Ricard Torres</div>
 			</div><!-- .site-info -->
 		</section>
 	</footer><!-- #colophon -->

@@ -15,7 +15,7 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 
 		// Create post object
 		$post = array(
-			'post_title'    => wp_strip_all_tags( 'New post' ),
+			// 'post_title'    => wp_strip_all_tags( 'New post' ),
 			'post_content'  => sanitize_textarea_field($_POST['post_content']),
 			'post_status'   => 'publish',
 			'post_author'   => 1

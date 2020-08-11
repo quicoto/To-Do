@@ -15,15 +15,25 @@
   /**************************************************/
 
   function _templatePostTitle(text) {
-    return `<h3>${text}</h3>`;
+    let html = ''
+
+    if (text) {
+      html = `<div class="col-12"><h3>${text}</h3></div>`
+    }
+
+    return html;
   }
 
   function _templatePostContent(text) {
-    return `<div>${text}</div>`;
+    return `<div class="col-12 mb-3">${text}</div>`;
   }
 
   function _templatePostMeta(text) {
-    return `<div>${text}</div>`;
+    return `<div class="col-12"><small>${text}</small></div>`;
+  }
+
+  function _templateButtonDone() {
+    return '<div class="col-12 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-9 text-right"><button type="button" class="btn btn-success btn-block">Mark as done</button></div>';
   }
 
   /**
@@ -34,10 +44,11 @@
     let html = '';
 
     html += `
-    <article class="bg-light p-5 mb-3">
+    <article class="row bg-light p-3 mb-3">
       ${_templatePostTitle(post.title)}
       ${_templatePostMeta(post.meta)}
       ${_templatePostContent(post.content)}
+      ${_templateButtonDone()}
     </article>
 `;
 
@@ -81,6 +92,7 @@
 			nonce: todo_main_ajax.nonce
 		};
     jQuery.get(todo_main_ajax.ajax_url, data, (response) => {
+      console.log(response);
 			JSON.parse(response).forEach((post) => {
         postsHTML +=
           _templatePost({
