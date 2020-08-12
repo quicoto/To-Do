@@ -12,30 +12,70 @@ License URI: LICENSE
 Text Domain: todo
 */
 
-.submitButton {
-	transition: 0.3s ease all;
-	overflow: hidden;
+$green: #28a74547;
+$light-gray: #f8f9fa;
 
-  .spinner {
-    left: 50%;
-    margin-left: -16px;
-    transform: scale( 2.5 );
+.loading {
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto;
+  display: inline-block;
+  vertical-align: top;
+
+  svg path,
+  svg rect{
+    fill: #0069d9;
+  }
+}
+
+@keyframes bgColor {
+  from {
+    background-color: $light-gray;
   }
 
-  .label {
-    position: relative;
-    display: inline-block;
+  to {
+	background-color: $green;
   }
+}
 
-  &[data-loading] {
-    .label {
-      opacity: 0;
-      transform: scale( 0.5 );
+.todo__post {
+  &--working {
+    &:after {
+      content: '';
+      opacity: 0.4;
+      animation: bgColor infinite alternate linear 1s;
+      width: 100%;
+      display: block;
+      z-index: 2;
+      height: 100%;
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      left: 0;
     }
 
-    .spinner {
-      opacity: 1;
-      transform: none;
+    .todo__loading {
+      display: block !important;
+    }
+  }
+
+  .todo__loading {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--done {
+    background-color: $green;
+
+    .todo__postActions {
+      display: none;
+    }
+
+    .todo__postContent {
+      text-decoration: line-through;
     }
   }
 }

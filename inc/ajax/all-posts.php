@@ -1,8 +1,5 @@
 <?php
 
-/*-----------------------------------------------------------------------------------*/
-/* Handle the Ajax request to create post */
-/*-----------------------------------------------------------------------------------*/
 if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 
 	function todo_all_posts_callback()
@@ -14,7 +11,19 @@ if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 		global $wpdb;
 
     $args = array();
-    $posts = get_posts($args);
+		$posts = get_posts($args);
+
+		if ($posts) {
+			foreach ($posts as &$post) {
+				$done = false;
+
+				if(get_post_meta($post->ID, 'todo__done', true)) {
+					$done = true;
+				}
+
+				$post->todo__done = $done;
+			}
+		}
 
 		die(json_encode($posts));
 	}

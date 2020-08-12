@@ -5,14 +5,14 @@
   "author": "Ricard Torres",
   "license": "GPL-2.0-or-later",
   "scripts": {
-    "build": "npm-run-all build:*",
+    "build": "NODE_ENV=production npm-run-all build:*",
     "build:css": "run-s css:precompile css:autoprefix css:minify",
-    "build:js": "webpack js/main.js -o scripts.min.js --mode=production",
+    "build:js": "webpack js/main.js -o scripts.min.js --config webpack.config.js",
     "lint:js": "eslint 'js/*.js' --fix",
     "css:autoprefix": "postcss --use autoprefixer --no-map --replace style.css",
     "css:precompile": "node-sass --omitSourceMapUrl true style.scss style.css",
     "css:minify": "cleancss -o style.css style.css",
-    "watch": "onchange 'js/*.js' 'style.scss' -- npm run build"
+    "watch": "NODE_ENV=development onchange 'js/*.js' 'style.scss' -- npm-run-all build:*"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",

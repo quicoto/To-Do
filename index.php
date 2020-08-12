@@ -19,6 +19,11 @@ get_header();
 			<section class="mb-4">
 				<?php get_template_part( 'template-parts/create-post' ); ?>
 			</section>
+			<div class="todo__loading">
+				<div class="d-flex justify-content-center">
+					<?php get_template_part( 'template-parts/loading' ); ?>
+				</div>
+			</div>
 			<section class="todo__postsContainer mb-4"></section>
 		<?php } else { ?>
 			<div class="row">

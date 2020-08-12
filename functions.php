@@ -140,6 +140,7 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/ajax/all-posts.php';
 require get_template_directory() . '/inc/ajax/create-post.php';
+require get_template_directory() . '/inc/ajax/post-done.php';
 
 /**
  * Redirect to FE

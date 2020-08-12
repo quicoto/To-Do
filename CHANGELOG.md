@@ -1,0 +1,11 @@
+## 0.2.0
+
+- Mark as done is possible now.
+- Add spinners.
+- Mark posts done visually too.
+
+## 0.1.0
+
+- Main build.
+- List posts.
+- Create post.

@@ -2,8 +2,11 @@
 
 A To Do list functionality with posts.
 
-- Frontend form to publish new posts
-- UI to set post as done
+- Frontend form to publish/edit items (stored as "posts" in the database).
+- Mark items as done.
+- No single view.
+- No archive view.
+- No pagination.
 
 ## Development
 
@@ -18,3 +21,5 @@ Build JS and CSS for production:
 Watch for the changes on JS and SCSS files and build everything:
 
 ```npm run watch```
+
+## Screenshot of UI

@@ -1,8 +1,5 @@
 <?php
 
-/*-----------------------------------------------------------------------------------*/
-/* Handle the Ajax request to create post */
-/*-----------------------------------------------------------------------------------*/
 if  ( ! function_exists( 'todo_create_post_callback' ) ):
 
 	function todo_create_post_callback()
@@ -25,7 +22,7 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 		$new_post_id = wp_insert_post( $post );
 
 		// Get the post so we can append it to the list
-    $new_post = get_post($new_post_id);
+		$new_post = get_post($new_post_id);
 
 		die(json_encode($new_post));
 	}
