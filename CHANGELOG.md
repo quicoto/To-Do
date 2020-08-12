@@ -1,3 +1,8 @@
+## 0.3.0
+
+- Make URL's clickable.
+- Add line breaks to rendered posts.
+
 ## 0.2.0
 
 - Mark as done is possible now.

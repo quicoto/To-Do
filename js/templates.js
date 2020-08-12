@@ -11,7 +11,7 @@ function _postTitle(text) {
 }
 
 function _postContent(text) {
-  return `<div class="col-12 mb-3 todo__postContent">${text}</div>`;
+  return `<div class="col-12 mb-3 todo__postContent">${text.replace(/\n/g, '<br />')}</div>`;
 }
 
 function _postMeta(text) {

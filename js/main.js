@@ -115,6 +115,8 @@ import {
     })
       .then((response) => response.json())
       .then((posts) => {
+        // eslint-disable-next-line no-console
+        console.log(posts);
         posts.slice(0, VALUES.maxPosts).forEach((post) => {
           postsHTML += templates.post(post, _$.loading);
         });
