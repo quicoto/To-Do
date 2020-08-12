@@ -112,7 +112,7 @@ function todo_scripts() {
 	/*-----------------------------------------------------------------------------------*/
 
 	$main_version = "1.0.0";
-	wp_enqueue_script('todo-main', get_template_directory_uri() . '/js/main.js', array(), $main_version, true);
+	wp_enqueue_script('todo-main', get_template_directory_uri() . '/scripts.min.js', array(), $main_version, true);
 	wp_localize_script( 'todo-main', 'todo_main_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( 'todo-main-nonce' ) ) );
 
 	/*-----------------------------------------------------------------------------------*/
@@ -140,3 +140,8 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/ajax/all-posts.php';
 require get_template_directory() . '/inc/ajax/create-post.php';
+
+/**
+ * Redirect to FE
+ */
+require get_template_directory() . '/inc/redirect-after-login.php';

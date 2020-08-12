@@ -1,5 +1,7 @@
 /* global todo_main_ajax */
 
+import * as templates from './templates';
+
 (function () {
   const MODULE_NAME = 'todo';
   const _$ = {};
@@ -14,50 +16,10 @@
     postsContainer: `.${CLASSES.postsContainer}`,
   };
 
-  /** *********************************************** */
-
-  function _templatePostTitle(text) {
-    let html = '';
-
-    if (text) {
-      html = `<div class="col-12"><h3>${text}</h3></div>`;
-    }
-
-    return html;
+  function _prependPost(post) {
+    const html = templates.post(post);
+    _$.postsContainer.innerHTML = `${html}${_$.postsContainer.innerHTML}`;
   }
-
-  function _templatePostContent(text) {
-    return `<div class="col-12 mb-3">${text}</div>`;
-  }
-
-  function _templatePostMeta(text) {
-    return `<div class="col-12"><small>${text}</small></div>`;
-  }
-
-  function _templateButtonDone() {
-    return '<div class="col-12 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-9 text-right"><button type="button" class="btn btn-success btn-block">Mark as done</button></div>';
-  }
-
-  /**
-   * @param  {object} post
-   * @property  {string} post.title
-   */
-  function _templatePost(post) {
-    let html = '';
-
-    html += `
-    <article class="row bg-light p-3 mb-3">
-      ${_templatePostTitle(post.title)}
-      ${_templatePostMeta(post.meta)}
-      ${_templatePostContent(post.content)}
-      ${_templateButtonDone()}
-    </article>
-`;
-
-    return html;
-  }
-
-  /** *********************************************** */
 
   function _setElements() {
     _$.newPostForm = document.querySelector(SELECTORS.newPostForm);
@@ -81,7 +43,8 @@
       body: data,
     })
       .then((response) => response.json())
-      .then(() => {
+      .then((post) => {
+        _prependPost(post);
         _$.newPostContent.value = '';
       })
       .catch((error) => {
@@ -114,11 +77,7 @@
       .then((posts) => {
         posts.forEach((post) => {
           postsHTML
-          += _templatePost({
-              title: post.post_title,
-              content: post.post_content,
-              meta: post.post_date,
-            });
+          += templates.post(post);
         });
 
         _$.postsContainer.innerHTML = postsHTML;

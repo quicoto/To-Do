@@ -22,9 +22,12 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 		);
 
 		// Insert the post into the database
-		wp_insert_post( $post );
+		$new_post_id = wp_insert_post( $post );
 
-		die(json_encode(new stdClass()));
+		// Get the post so we can append it to the list
+    $new_post = get_post($new_post_id);
+
+		die(json_encode($new_post));
 	}
 
 	add_action( 'wp_ajax_todo_create_post', 'todo_create_post_callback' );

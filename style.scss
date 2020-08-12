@@ -1,0 +1,41 @@
+/*!
+Theme Name: To Do
+Theme URI:
+Author: Ricard Torres
+Author URI: https://ricard.dev
+Description:
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: todo
+*/
+
+.submitButton {
+	transition: 0.3s ease all;
+	overflow: hidden;
+
+  .spinner {
+    left: 50%;
+    margin-left: -16px;
+    transform: scale( 2.5 );
+  }
+
+  .label {
+    position: relative;
+    display: inline-block;
+  }
+
+  &[data-loading] {
+    .label {
+      opacity: 0;
+      transform: scale( 0.5 );
+    }
+
+    .spinner {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

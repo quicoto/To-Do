@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <div class="form-group">
-        <label for="new-post">New Post</label>
+        <label for="new-post">New item</label>
         <textarea class="form-control todo__newPostContent" id="new-post" rows="3" required></textarea>
       </div>
     </div>

@@ -14,14 +14,24 @@
 
 get_header();
 ?>
-
 	<main id="primary" class="site-main container">
-		<section class="mb-4">
-			<?php get_template_part( 'template-parts/create-post' ); ?>
-		</section>
-		<section class="todo__postsContainer mb-4"></section>
+		<?php if (is_user_logged_in()) { ?>
+			<section class="mb-4">
+				<?php get_template_part( 'template-parts/create-post' ); ?>
+			</section>
+			<section class="todo__postsContainer mb-4"></section>
+		<?php } else { ?>
+			<div class="row">
+				<div class="col-12">
+					<h2 class="text-center mb-4 text-danger">You must be logged in to use this app</h2>
+				</div>
+				<div class="col-12">
+					<p class="text-center">
+						<a href="<?=get_home_url()?>/wp-admin" class="btn btn-primary">Go to WordPress Dashboard</a>
+					</p>
+				</div>
+			</div>
+		<?php } ?>
 	</main><!-- #main -->
-
 <?php
-get_sidebar();
 get_footer();
