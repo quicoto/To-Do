@@ -1,12 +1,18 @@
-## To Do WordPress Theme
+# To Do WordPress Theme
 
 A To Do list functionality with posts.
 
-- Frontend form to publish/edit items (stored as "posts" in the database).
+- Frontend form to publish items (stored as "posts" in the database).
 - Mark items as done.
 - No single view.
 - No archive view.
 - No pagination.
+
+## Posible improvements
+
+- Edit posts
+- Search posts
+- Pagination
 
 ## Development
 
