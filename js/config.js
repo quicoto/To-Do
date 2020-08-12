@@ -1,9 +1,5 @@
 const MODULE_NAME = 'todo';
 
-export const VALUES = {
-  maxPosts: 50,
-};
-
 export const DATA_ATTRIBUTES = {
   postID: 'postid',
 };
@@ -16,6 +12,7 @@ export const CLASSES = {
   newPostSubmitButton: `${MODULE_NAME}__newPostSubmitButton`,
   postDefaultBackground: 'bg-light',
   postDoneBackground: `${MODULE_NAME}__post--done`,
+  refreshListButton: `${MODULE_NAME}__refreshListButton`,
   working: `${MODULE_NAME}__post--working`,
   postsContainer: `${MODULE_NAME}__postsContainer`,
 };
@@ -25,5 +22,6 @@ export const SELECTORS = {
   newPostContent: `.${CLASSES.newPostContent}`,
   newPostForm: `.${CLASSES.newPostForm}`,
   newPostSubmitButton: `.${CLASSES.newPostSubmitButton}`,
+  refreshListButton: `.${CLASSES.refreshListButton}`,
   postsContainer: `.${CLASSES.postsContainer}`,
 };

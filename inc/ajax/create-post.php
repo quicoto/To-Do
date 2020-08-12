@@ -21,6 +21,8 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 		// Insert the post into the database
 		$new_post_id = wp_insert_post( $post );
 
+		update_post_meta(intval($new_post_id), 'todo__done', false);
+
 		// Get the post so we can append it to the list
 		$new_post = get_post($new_post_id);
 

@@ -94,19 +94,12 @@ add_action( 'widgets_init', 'todo_widgets_init' );
  * Enqueue scripts and styles.
  */
 function todo_scripts() {
-	$theme_version = "0.4.1";
+	$theme_version = "0.5.0";
 
 	/*-----------------------------------------------------------------------------------*/
 	/* Encue the Scripts for main CSS */
 	/*-----------------------------------------------------------------------------------*/
 	wp_enqueue_style( 'todo-style', get_stylesheet_uri(), array(), $theme_version );
-
-	/*-----------------------------------------------------------------------------------*/
-	/* Encue the Scripts / CSS Bootstrap */
-	/*-----------------------------------------------------------------------------------*/
-
-	$bootstrap_vesion = "4.5.2";
-	wp_enqueue_style( 'todo-bootstrap', get_template_directory_uri() . '/bootstrap/bootstrap.min.css', array(), $bootstrap_vesion );
 
 	/*-----------------------------------------------------------------------------------*/
 	/* Encue the Scripts for the Ajax call */
@@ -124,6 +117,14 @@ function todo_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'todo_scripts' );
+
+function todo_remove_crap(){
+	wp_dequeue_style( 'wp-block-library' );
+	wp_deregister_script( 'wp-embed' );
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+}
+add_action( 'wp_enqueue_scripts', 'todo_remove_crap' );
 
 /**
  * Custom template tags for this theme.

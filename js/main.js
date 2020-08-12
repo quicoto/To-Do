@@ -1,8 +1,8 @@
-/* global todo_main_ajax, tinymce */
+/* global todo_main_ajax */
 
 import * as templates from './templates';
 import {
-  CLASSES, SELECTORS, VALUES, DATA_ATTRIBUTES,
+  CLASSES, SELECTORS, DATA_ATTRIBUTES,
 } from './config';
 
 // eslint-disable-next-line func-names
@@ -19,6 +19,7 @@ import {
     _$.newPostForm = document.querySelector(SELECTORS.newPostForm);
     _$.newPostSubmitButton = document.querySelector(SELECTORS.newPostSubmitButton);
     _$.postsContainer = document.querySelector(SELECTORS.postsContainer);
+    _$.refreshListButton = document.querySelector(SELECTORS.refreshListButton);
   }
 
   function _onSubmit(event) {
@@ -32,7 +33,7 @@ import {
 
     data.append('action', 'todo_create_post');
     data.append('nonce', todo_main_ajax.nonce);
-    data.append('post_content', tinymce.activeEditor.getContent());
+    data.append('post_content', _$.newPostContent.value);
 
     fetch(todo_main_ajax.ajax_url, {
       method: 'POST',
@@ -91,19 +92,11 @@ import {
     return true;
   }
 
-  function _addEventListeners() {
-    if (_$.newPostForm) {
-      _$.newPostForm.addEventListener('submit', _onSubmit);
-    }
-
-    if (_$.postsContainer) {
-      _$.postsContainer.addEventListener('click', _onClick);
-    }
-  }
-
   function _renderPosts() {
     let postsHTML = '';
     const data = new FormData();
+
+    _$.loading.removeAttribute('hidden');
 
     data.append('action', 'todo_all_posts');
     data.append('nonce', todo_main_ajax.nonce);
@@ -117,7 +110,7 @@ import {
       .then((posts) => {
         // eslint-disable-next-line no-console
         console.log(posts);
-        posts.slice(0, VALUES.maxPosts).forEach((post) => {
+        posts.forEach((post) => {
           postsHTML += templates.post(post, _$.loading);
         });
 
@@ -128,6 +121,20 @@ import {
         // eslint-disable-next-line no-console
         console.log('[To Do - All Posts]', error);
       });
+  }
+
+  function _addEventListeners() {
+    if (_$.newPostForm) {
+      _$.newPostForm.addEventListener('submit', _onSubmit);
+    }
+
+    if (_$.postsContainer) {
+      _$.postsContainer.addEventListener('click', _onClick);
+    }
+
+    if (_$.refreshListButton) {
+      _$.refreshListButton.addEventListener('click', _renderPosts);
+    }
   }
 
   function _init() {

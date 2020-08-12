@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Improve load perfomance. Remnove all unecessary JS and CSS
+
 ## 0.4.1
 
 - Use WP Editor.
