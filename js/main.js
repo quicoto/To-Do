@@ -7,6 +7,10 @@ import {
 
 // eslint-disable-next-line func-names
 (function () {
+  const _ = {
+    counterTodo: 0,
+    counterTotal: 0,
+  };
   const _$ = {};
 
   function _prependPost(post) {
@@ -20,6 +24,14 @@ import {
     _$.newPostSubmitButton = document.querySelector(SELECTORS.newPostSubmitButton);
     _$.postsContainer = document.querySelector(SELECTORS.postsContainer);
     _$.refreshListButton = document.querySelector(SELECTORS.refreshListButton);
+    _$.counter = document.querySelector(SELECTORS.counter);
+  }
+
+  /**
+   * @param  {number} count
+   */
+  function _updateCounter() {
+    _$.counter.innerHTML = templates.counter(_.counterTodo, _.counterTotal);
   }
 
   function _onSubmit(event) {
@@ -42,6 +54,9 @@ import {
     })
       .then((response) => response.json())
       .then((post) => {
+        _.counterTodo += 1;
+        _.counterTotal += 1;
+        _updateCounter();
         _prependPost(post);
         _$.loading.setAttribute('hidden', true);
         _$.newPostForm.reset();
@@ -83,6 +98,9 @@ import {
           $post.classList.remove(CLASSES.postDefaultBackground);
           $post.classList.add(CLASSES.postDoneBackground);
         }
+
+        _.counterTodo -= 1;
+        _updateCounter();
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -108,12 +126,15 @@ import {
     })
       .then((response) => response.json())
       .then((posts) => {
-        // eslint-disable-next-line no-console
-        console.log(posts);
         posts.forEach((post) => {
           postsHTML += templates.post(post, _$.loading);
+          if (!post.todo__done) {
+            _.counterTodo += 1;
+          }
         });
 
+        _.counterTotal = posts.length;
+        _updateCounter();
         _$.postsContainer.innerHTML = postsHTML;
         _$.loading.setAttribute('hidden', true);
       })
@@ -139,8 +160,11 @@ import {
 
   function _init() {
     _setElements();
-    _addEventListeners();
-    _renderPosts();
+
+    if (_$.newPostForm) {
+      _addEventListeners();
+      _renderPosts();
+    }
   }
 
   _init();

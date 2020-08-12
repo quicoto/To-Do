@@ -24,11 +24,12 @@ get_header();
 					<?php get_template_part( 'template-parts/loading' ); ?>
 				</div>
 			</div>
+			<div class="todo__counter"></div>
 			<section class="todo__postsContainer mb-4"></section>
 		<?php } else { ?>
 			<div class="row">
 				<div class="col-12">
-					<h2 class="text-center mb-4 text-danger">You must be logged in to use this app</h2>
+					<h2 class="text-center mb-4">You must be logged in to use this app</h2>
 				</div>
 				<div class="col-12">
 					<p class="text-center">

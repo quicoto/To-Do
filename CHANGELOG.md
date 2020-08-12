@@ -1,3 +1,8 @@
+## 1.0.0
+
+- Added counters.
+- Ready for production.
+
 ## 0.5.0
 
 - Improve load perfomance. Remnove all unecessary JS and CSS

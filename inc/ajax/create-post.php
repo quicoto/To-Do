@@ -25,6 +25,7 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 
 		// Get the post so we can append it to the list
 		$new_post = get_post($new_post_id);
+		$new_post->post_content = make_clickable($new_post->post_content);
 
 		die(json_encode($new_post));
 	}

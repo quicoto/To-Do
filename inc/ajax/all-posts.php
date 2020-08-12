@@ -12,12 +12,6 @@ if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 
 		global $wpdb;
 
-    // $args = array(
-		// 	'numberposts' => -1,
-		// 	'suppress_filters' => false
-		// );
-		// $posts = get_posts($args);
-
 		$posts_done = query_posts(
 			array(
 						'numberposts' => -1,

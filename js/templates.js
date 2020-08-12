@@ -10,6 +10,13 @@ function _postTitle(text) {
   return html;
 }
 
+export function counter(counterTodo, counterTotal) {
+  return `<h3 class="d-flex justify-content-between">
+    <div>To do: <span class="todo__counterTodo">${counterTodo}</span></div>
+    <div>Total: <span class="todo__counterTotal">${counterTotal}</span></div>
+  </h3>`;
+}
+
 function _postContent(text) {
   return `<div class="col-12 mb-3 todo__postContent">${text.replace(/\n/g, '<br />')}</div>`;
 }

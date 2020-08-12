@@ -22,4 +22,8 @@ Watch for the changes on JS and SCSS files and build everything:
 
 ```npm run watch```
 
-## Screenshot of UI
+## Screenshot
+
+![Screenshot Mobile](screenshot_mobile.png)
+
+![Screenshot Desktop](screenshot_desktop.png)
