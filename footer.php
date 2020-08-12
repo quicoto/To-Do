@@ -15,7 +15,7 @@
 		<section class="container pt-4 pb-4">
 			<div class="site-info row">
 				<div class="col-12 col-sm-6 text-center text-sm-left">Powered by WordPress</div>
-				<div class="col-12 col-sm-6 text-center text-sm-right">To Do Theme by Ricard Torres</div>
+				<div class="col-12 col-sm-6 text-center text-sm-right">To Do Theme by <a class="text-white" href="https://ricard.dev/">Ricard Torres</a></div>
 			</div><!-- .site-info -->
 		</section>
 	</footer><!-- #colophon -->
