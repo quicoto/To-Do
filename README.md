@@ -1,4 +1,4 @@
-## To Do WordPress Theme
+# To Do WordPress Theme
 
 A To Do list functionality with posts.
 
@@ -7,6 +7,12 @@ A To Do list functionality with posts.
 - No single view.
 - No archive view.
 - No pagination.
+
+## Posible improvements
+
+- Edit posts
+- Search posts
+- Pagination
 
 ## Development
 
