@@ -87,13 +87,19 @@
 
   function _renderPosts() {
     let postsHTML = '';
-    const data = {
-			action: 'todo_all_posts',
-			nonce: todo_main_ajax.nonce
-		};
-    jQuery.get(todo_main_ajax.ajax_url, data, (response) => {
-      console.log(response);
-			JSON.parse(response).forEach((post) => {
+    const data = new FormData();
+
+    data.append( 'action', 'todo_all_posts' );
+    data.append( 'nonce', todo_main_ajax.nonce );
+
+    fetch(todo_main_ajax.ajax_url, {
+      method: "POST",
+      credentials: 'same-origin',
+      body: data
+    })
+    .then((response) => response.json())
+    .then((posts) => {
+      posts.forEach((post) => {
         postsHTML +=
           _templatePost({
             title: post.post_title,
@@ -103,6 +109,10 @@
       })
 
       _$.postsContainer.innerHTML = postsHTML;
+    })
+    .catch((error) => {
+      console.log('[To Do]');
+      console.error(error);
     });
   }
 
