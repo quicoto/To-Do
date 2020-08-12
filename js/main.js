@@ -1,6 +1,7 @@
 /* global todo_main_ajax */
 
 import * as templates from './templates';
+import config from './config';
 
 (function () {
   const MODULE_NAME = 'todo';
@@ -75,7 +76,7 @@ import * as templates from './templates';
     })
       .then((response) => response.json())
       .then((posts) => {
-        posts.forEach((post) => {
+        posts.slice(0, config.maxPosts).forEach((post) => {
           postsHTML
           += templates.post(post);
         });

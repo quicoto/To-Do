@@ -13,9 +13,7 @@ if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 
 		global $wpdb;
 
-    $args = array(
-      'numberposts' => 100
-    );
+    $args = array();
     $posts = get_posts($args);
 
 		die(json_encode($posts));

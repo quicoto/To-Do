@@ -11,7 +11,8 @@
     "lint:js": "eslint 'js/*.js' --fix",
     "css:autoprefix": "postcss --use autoprefixer --no-map --replace style.css",
     "css:precompile": "node-sass --omitSourceMapUrl true style.scss style.css",
-    "css:minify": "cleancss -o style.css style.css"
+    "css:minify": "cleancss -o style.css style.css",
+    "watch": "onchange 'js/*.js' 'style.scss' -- npm run build"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
