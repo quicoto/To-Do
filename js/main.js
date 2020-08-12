@@ -1,4 +1,4 @@
-/* global todo_main_ajax */
+/* global todo_main_ajax, tinymce */
 
 import * as templates from './templates';
 import {
@@ -32,7 +32,7 @@ import {
 
     data.append('action', 'todo_create_post');
     data.append('nonce', todo_main_ajax.nonce);
-    data.append('post_content', _$.newPostContent.value);
+    data.append('post_content', tinymce.activeEditor.getContent());
 
     fetch(todo_main_ajax.ajax_url, {
       method: 'POST',

@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Use WP Editor.
+
 ## 0.3.1
 
 - Remove node_modules from repo
