@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Remove node_modules from repo
+
 ## 0.3.0
 
 - Make URL's clickable.

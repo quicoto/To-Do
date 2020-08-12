@@ -94,10 +94,11 @@ add_action( 'widgets_init', 'todo_widgets_init' );
  * Enqueue scripts and styles.
  */
 function todo_scripts() {
+	$theme_version = "0.3.1";
+
 	/*-----------------------------------------------------------------------------------*/
 	/* Encue the Scripts for main CSS */
 	/*-----------------------------------------------------------------------------------*/
-	$theme_version = "0.3.0";
 	wp_enqueue_style( 'todo-style', get_stylesheet_uri(), array(), $theme_version );
 
 	/*-----------------------------------------------------------------------------------*/
@@ -111,8 +112,7 @@ function todo_scripts() {
 	/* Encue the Scripts for the Ajax call */
 	/*-----------------------------------------------------------------------------------*/
 
-	$main_version = "1.0.0";
-	wp_enqueue_script('todo-main', get_template_directory_uri() . '/scripts.min.js', array(), $main_version, true);
+	wp_enqueue_script('todo-main', get_template_directory_uri() . '/scripts.min.js', array(), $theme_version, true);
 	wp_localize_script( 'todo-main', 'todo_main_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( 'todo-main-nonce' ) ) );
 
 	/*-----------------------------------------------------------------------------------*/
