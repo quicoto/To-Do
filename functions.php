@@ -139,4 +139,4 @@ require get_template_directory() . '/inc/template-functions.php';
  * Ajax
  */
 require get_template_directory() . '/inc/ajax/all-posts.php';
-require get_template_directory() . '/inc/ajax/new-post.php';
+require get_template_directory() . '/inc/ajax/create-post.php';

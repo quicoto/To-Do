@@ -39,6 +39,6 @@
     "map": false
   },
   "scripts": {
-    "lint:js": "eslint 'js/*.js'"
+    "lint:js": "eslint 'js/*.js' --fix"
   }
 }

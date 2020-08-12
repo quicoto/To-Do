@@ -1,24 +1,26 @@
+/* global todo_main_ajax */
+
 (function () {
-  const MODULE_NAME = "todo"
-  const _$ = {}
+  const MODULE_NAME = 'todo';
+  const _$ = {};
   const CLASSES = {
     newPostContent: `${MODULE_NAME}__newPostContent`,
     newPostForm: `${MODULE_NAME}__newPostForm`,
-    postsContainer: `${MODULE_NAME}__postsContainer`
-  }
+    postsContainer: `${MODULE_NAME}__postsContainer`,
+  };
   const SELECTORS = {
     newPostContent: `.${CLASSES.newPostContent}`,
     newPostForm: `.${CLASSES.newPostForm}`,
     postsContainer: `.${CLASSES.postsContainer}`,
-  }
+  };
 
-  /**************************************************/
+  /** *********************************************** */
 
   function _templatePostTitle(text) {
-    let html = ''
+    let html = '';
 
     if (text) {
-      html = `<div class="col-12"><h3>${text}</h3></div>`
+      html = `<div class="col-12"><h3>${text}</h3></div>`;
     }
 
     return html;
@@ -52,36 +54,47 @@
     </article>
 `;
 
-    return html
+    return html;
   }
 
-  /**************************************************/
+  /** *********************************************** */
 
   function _setElements() {
-    _$.newPostForm = document.querySelector(SELECTORS.newPostForm)
-    _$.postsContainer = document.querySelector(SELECTORS.postsContainer)
+    _$.newPostForm = document.querySelector(SELECTORS.newPostForm);
+    _$.postsContainer = document.querySelector(SELECTORS.postsContainer);
   }
 
   function _onSubmit(event) {
-    event.preventDefault()
+    const data = new FormData();
 
-    _$.newPostContent = document.querySelector(SELECTORS.newPostContent)
-    const data = {
-			action: 'todo_create_post',
-			post_content: _$.newPostContent.value,
-			nonce: todo_main_ajax.nonce
-		};
-		jQuery.post(todo_main_ajax.ajax_url, data, (response) => {
-      _$.newPostContent.value = "";
-			console.log(response);
-		});
+    event.preventDefault();
 
-    return false
+    _$.newPostContent = document.querySelector(SELECTORS.newPostContent);
+
+    data.append('action', 'todo_create_post');
+    data.append('nonce', todo_main_ajax.nonce);
+    data.append('post_content', _$.newPostContent.value);
+
+    fetch(todo_main_ajax.ajax_url, {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: data,
+    })
+      .then((response) => response.json())
+      .then(() => {
+        _$.newPostContent.value = '';
+      })
+      .catch((error) => {
+        console.log('[To Do - Create Post]');
+        console.error(error);
+      });
+
+    return false;
   }
 
   function _addEventListeners() {
     if (_$.newPostForm) {
-      _$.newPostForm.addEventListener('submit', _onSubmit)
+      _$.newPostForm.addEventListener('submit', _onSubmit);
     }
   }
 
@@ -89,37 +102,37 @@
     let postsHTML = '';
     const data = new FormData();
 
-    data.append( 'action', 'todo_all_posts' );
-    data.append( 'nonce', todo_main_ajax.nonce );
+    data.append('action', 'todo_all_posts');
+    data.append('nonce', todo_main_ajax.nonce);
 
     fetch(todo_main_ajax.ajax_url, {
-      method: "POST",
+      method: 'POST',
       credentials: 'same-origin',
-      body: data
+      body: data,
     })
-    .then((response) => response.json())
-    .then((posts) => {
-      posts.forEach((post) => {
-        postsHTML +=
-          _templatePost({
-            title: post.post_title,
-            content: post.post_content,
-            meta: post.post_date
-          })
-      })
+      .then((response) => response.json())
+      .then((posts) => {
+        posts.forEach((post) => {
+          postsHTML
+          += _templatePost({
+              title: post.post_title,
+              content: post.post_content,
+              meta: post.post_date,
+            });
+        });
 
-      _$.postsContainer.innerHTML = postsHTML;
-    })
-    .catch((error) => {
-      console.log('[To Do]');
-      console.error(error);
-    });
+        _$.postsContainer.innerHTML = postsHTML;
+      })
+      .catch((error) => {
+        console.log('[To Do - All Posts]');
+        console.error(error);
+      });
   }
 
   function _init() {
-    _setElements()
-    _addEventListeners()
-    _renderPosts()
+    _setElements();
+    _addEventListeners();
+    _renderPosts();
   }
 
   _init();

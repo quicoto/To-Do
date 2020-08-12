@@ -24,7 +24,7 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 		// Insert the post into the database
 		wp_insert_post( $post );
 
-		die('All good');
+		die(json_encode(new stdClass()));
 	}
 
 	add_action( 'wp_ajax_todo_create_post', 'todo_create_post_callback' );
