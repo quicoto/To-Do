@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Sanitize user input
+- Other fixes and cleanups
+
 ## 1.0.0
 
 - Added counters.
