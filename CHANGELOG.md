@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+
+- Add link to repo in the footer
+
 ## 1.2.1
 
 - Fix mobile first CSS rule
