@@ -114,6 +114,7 @@ import {
     let postsHTML = '';
     const data = new FormData();
 
+    _.counterTodo = 0;
     _$.loading.removeAttribute('hidden');
 
     data.append('action', 'todo_all_posts');

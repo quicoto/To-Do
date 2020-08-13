@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+- Fix bug with the counter when refreshing the list
+- Move the loading above the counters for less jumping.
+
 ## 1.2.2
 
 - Add link to repo in the footer
