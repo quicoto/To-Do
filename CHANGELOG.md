@@ -1,3 +1,10 @@
+# Changelog
+
+## 1.2.0
+
+- Fix CSS for centering mobile first
+- Add link to the blog name.
+
 ## 1.1.0
 
 - Sanitize user input

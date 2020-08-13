@@ -35,6 +35,10 @@
 <div id="page" class="site">
 	<header id="masthead" class="site-header bg-dark text-white">
 		<div class="site-branding container pt-3 pb-3 mb-4">
-			<h1 class="site-title text-white"><?php bloginfo( 'name' ); ?></h1>
+			<h1 class="site-title text-white text-center text-sm-left">
+				<a href="<?php echo get_home_url(); ?>" class="text-white">
+					<?php bloginfo( 'name' ); ?>
+				</a>
+			</h1>
 		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
