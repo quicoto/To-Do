@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+- Fix mobile first CSS rule
+
 ## 1.2.0
 
 - Fix CSS for centering mobile first
