@@ -4,6 +4,7 @@ if  ( ! function_exists( 'todo_create_post_callback' ) ):
 
 	function todo_create_post_callback()
 	{
+		if (!is_user_logged_in()) die(json_encode(array('logged_out' => true)));
 
 		// Check the nonce - security
 		check_ajax_referer( 'todo-main-nonce', 'nonce' );

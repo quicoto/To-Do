@@ -4,6 +4,7 @@ if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 
 	function todo_all_posts_callback()
 	{
+		if (!is_user_logged_in()) die(json_encode(array('logged_out' => true)));
 
 		$meta_key = 'todo__done';
 

@@ -26,4 +26,5 @@ export const SELECTORS = {
   newPostSubmitButton: `.${CLASSES.newPostSubmitButton}`,
   postsContainer: `.${CLASSES.postsContainer}`,
   refreshListButton: `.${CLASSES.refreshListButton}`,
+  homeUrlLink: '.site-title a',
 };

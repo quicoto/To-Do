@@ -27,6 +27,16 @@ import {
     _$.counter = document.querySelector(SELECTORS.counter);
   }
 
+  function _redirectIfNotLoggedIn(data) {
+    if (data.logged_out) {
+      const $homeUrlLink = document.querySelector(SELECTORS.homeUrlLink);
+
+      if ($homeUrlLink) {
+        window.location = $homeUrlLink.getAttribute('href');
+      }
+    }
+  }
+
   /**
    * @param  {number} count
    */
@@ -54,6 +64,7 @@ import {
     })
       .then((response) => response.json())
       .then((post) => {
+        _redirectIfNotLoggedIn(post);
         _.counterTodo += 1;
         _.counterTotal += 1;
         _updateCounter();
@@ -92,7 +103,9 @@ import {
       body: data,
     })
       .then((response) => response.json())
-      .then(() => {
+      .then((error) => {
+        _redirectIfNotLoggedIn(error);
+
         if ($post) {
           $post.classList.remove(CLASSES.working);
           $post.classList.remove(CLASSES.postDefaultBackground);
@@ -127,6 +140,8 @@ import {
     })
       .then((response) => response.json())
       .then((posts) => {
+        _redirectIfNotLoggedIn(posts);
+
         posts.forEach((post) => {
           postsHTML += templates.post(post, _$.loading);
           if (!post.todo__done) {

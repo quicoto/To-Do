@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+- Check if session has expired and redirect instead of doing nothing.
+
 ## 1.3.0
 
 - Fix bug with the counter when refreshing the list
