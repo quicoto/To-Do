@@ -1,11 +1,11 @@
 {
   "name": "to-do",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "To Do WordPress Theme",
   "author": "Ricard Torres",
   "license": "GPL-2.0-or-later",
   "scripts": {
-    "build": "NODE_ENV=production npm-run-all build:*",
+    "build": "NODE_ENV=production npm-run-all lint:js build:*",
     "build:css": "run-s css:precompile css:autoprefix css:minify",
     "build:js": "webpack js/main.js -o scripts.min.js --config webpack.config.js",
     "lint:js": "eslint 'js/*.js' --fix",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "clean-css-cli": "^4.3.0",
-    "eslint": "^7.6.0",
+    "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "node-sass": "4.14.1",

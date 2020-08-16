@@ -76,6 +76,7 @@ import {
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.log('[To Do - Create Post]', error);
+        _redirectIfNotLoggedIn({ logged_out: true });
       });
 
     return false;
@@ -118,6 +119,7 @@ import {
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.log('[To Do - Post Done]', error);
+        _redirectIfNotLoggedIn({ logged_out: true });
       });
 
     return true;
@@ -157,6 +159,7 @@ import {
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.log('[To Do - All Posts]', error);
+        _redirectIfNotLoggedIn({ logged_out: true });
       });
   }
 
