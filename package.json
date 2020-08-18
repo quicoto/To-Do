@@ -5,7 +5,7 @@
   "author": "Ricard Torres",
   "license": "GPL-2.0-or-later",
   "scripts": {
-    "build": "NODE_ENV=production npm-run-all lint:js build:*",
+    "build": "NODE_ENV=production run-s format:* lint:js build:*",
     "build:css": "run-s css:precompile css:autoprefix css:minify",
     "build:js": "webpack js/main.js -o scripts.min.js --config webpack.config.js",
     "lint:js": "eslint 'js/*.js' --fix",
