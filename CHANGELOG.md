@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0
+
+- Prettify code.
+
 ## 1.4.1
 
 - Redirect to admin if error is found in fetch calls.

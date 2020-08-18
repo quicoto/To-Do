@@ -18,7 +18,10 @@ export function counter(counterTodo, counterTotal) {
 }
 
 function _postContent(text) {
-  return `<div class="col-12 mb-3 todo__postContent">${text.replace(/\n/g, '<br />')}</div>`;
+  return `<div class="col-12 mb-3 todo__postContent">${text.replace(
+    /\n/g,
+    '<br />',
+  )}</div>`;
 }
 
 function _postMeta(text) {
@@ -56,7 +59,9 @@ export function post(data, $loading) {
   }
 
   html += `
-  <article class="todo__post position-relative row ${backgroundClass} p-3 mb-3" data-${DATA_ATTRIBUTES.postID}="${data.ID}">
+  <article class="todo__post position-relative row ${backgroundClass} p-3 mb-3" data-${
+  DATA_ATTRIBUTES.postID
+}="${data.ID}">
     <div class="${CLASSES.loading}">${$loading.innerHTML}</div>
     ${_postTitle(data.post_title)}
     ${_postMeta(data.post_date)}

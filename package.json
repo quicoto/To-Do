@@ -1,6 +1,6 @@
 {
   "name": "to-do",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "To Do WordPress Theme",
   "author": "Ricard Torres",
   "license": "GPL-2.0-or-later",
@@ -12,7 +12,10 @@
     "css:autoprefix": "postcss --use autoprefixer --no-map --replace style.css",
     "css:precompile": "node-sass --omitSourceMapUrl true style.scss style.css",
     "css:minify": "cleancss -o style.css style.css",
-    "watch": "NODE_ENV=development onchange 'js/*.js' 'style.scss' -- npm-run-all build:*"
+    "watch": "NODE_ENV=development onchange 'js/*.js' 'style.scss' -- npm-run-all build:*",
+    "format": "npm-run-all format:*",
+    "format:js": "prettier --write ./js/*.js",
+    "format:scss": "prettier --write ./style.scss"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
@@ -29,5 +32,8 @@
     "uglify-es": "^3.3.9",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "prettier": "^2.0.5"
   }
 }

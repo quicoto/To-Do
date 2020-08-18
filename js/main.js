@@ -1,9 +1,7 @@
 /* global todo_main_ajax */
 
 import * as templates from './templates';
-import {
-  CLASSES, SELECTORS, DATA_ATTRIBUTES,
-} from './config';
+import { CLASSES, SELECTORS, DATA_ATTRIBUTES } from './config';
 
 // eslint-disable-next-line func-names
 (function () {
@@ -21,7 +19,9 @@ import {
   function _setElements() {
     _$.loading = document.querySelector(SELECTORS.loading);
     _$.newPostForm = document.querySelector(SELECTORS.newPostForm);
-    _$.newPostSubmitButton = document.querySelector(SELECTORS.newPostSubmitButton);
+    _$.newPostSubmitButton = document.querySelector(
+      SELECTORS.newPostSubmitButton,
+    );
     _$.postsContainer = document.querySelector(SELECTORS.postsContainer);
     _$.refreshListButton = document.querySelector(SELECTORS.refreshListButton);
     _$.counter = document.querySelector(SELECTORS.counter);
@@ -90,7 +90,9 @@ import {
     event.target.setAttribute('disabled', true);
 
     const postId = +event.target.dataset[DATA_ATTRIBUTES.postID];
-    const $post = document.querySelector(`[data-${DATA_ATTRIBUTES.postID}="${postId}"]`);
+    const $post = document.querySelector(
+      `[data-${DATA_ATTRIBUTES.postID}="${postId}"]`,
+    );
     const data = new FormData();
     data.append('action', 'todo_post_done');
     data.append('nonce', todo_main_ajax.nonce);
