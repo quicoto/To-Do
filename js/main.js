@@ -83,9 +83,9 @@ import { CLASSES, SELECTORS, DATA_ATTRIBUTES } from './config';
   }
 
   function _onClick(event) {
-    event.preventDefault();
-
     if (!event.target.classList.contains(CLASSES.buttonDone)) return false;
+
+    event.preventDefault();
 
     event.target.setAttribute('disabled', true);
 
