@@ -18,5 +18,8 @@ function get_post_meta_for_api( $object ) {
     $post_id = $object['id'];
 
     // return the post meta
-    return array(get_post_meta( $post_id ), 'my test 123');
+    return array(
+      get_post_meta( $post_id ),
+      'title' => wp_strip_all_tags(get_the_content($post_id))
+    );
 }
