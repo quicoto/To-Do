@@ -6,8 +6,8 @@
 add_action( 'rest_api_init', 'create_api_posts_meta_field' );
 
 function create_api_posts_meta_field() {
-    register_rest_field( 'post', 'post-meta-fields', array(
-           'get_callback'    => 'get_post_meta_for_api',
+    register_rest_field( 'post', 'done', array(
+           'get_callback'    => 'get_post_meta_done',
            'schema'          => null,
         )
     );
@@ -15,16 +15,16 @@ function create_api_posts_meta_field() {
     register_rest_field( 'post', 'clean-title', array(
       'get_callback'    => 'get_post_clean_title',
       'schema'          => null,
-   )
-);
+      )
+    );
 }
 
-function get_post_meta_for_api( $object ) {
+function get_post_meta_done( $object ) {
     //get the id of the post object array
     $post_id = $object['id'];
 
     // return the post meta
-    return get_post_meta( $post_id );
+    return get_post_meta( $post_id, 'todo__done');
 }
 
 function get_post_clean_title( $object ) {
