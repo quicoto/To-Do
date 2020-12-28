@@ -11,6 +11,12 @@ function create_api_posts_meta_field() {
            'schema'          => null,
         )
     );
+
+    register_rest_field( 'post', 'clean-title', array(
+      'get_callback'    => 'get_post_clean_title',
+      'schema'          => null,
+   )
+);
 }
 
 function get_post_meta_for_api( $object ) {
@@ -18,8 +24,12 @@ function get_post_meta_for_api( $object ) {
     $post_id = $object['id'];
 
     // return the post meta
-    return array(
-      get_post_meta( $post_id ),
-      'title' => wp_strip_all_tags(get_the_content($post_id))
-    );
+    return get_post_meta( $post_id );
+}
+
+function get_post_clean_title( $object ) {
+    //get the id of the post object array
+    $post_id = $object['id'];
+
+    return wp_strip_all_tags(get_the_content($post_id));
 }
