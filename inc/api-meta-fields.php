@@ -24,7 +24,7 @@ function get_post_meta_done( $object ) {
     $post_id = $object['id'];
 
     // return the post meta
-    return get_post_meta( $post_id, 'todo__done') ? true : false;
+    return get_post_meta( $post_id, 'todo__done') === "1" ? true : false;
 }
 
 function get_post_clean_title( $object ) {
