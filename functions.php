@@ -147,3 +147,8 @@ require get_template_directory() . '/inc/ajax/post-done.php';
  * Redirect to FE
  */
 require get_template_directory() . '/inc/redirect-after-login.php';
+
+/**
+ * REST API
+ */
+require get_template_directory() . '/inc/api-meta-fields.php';
