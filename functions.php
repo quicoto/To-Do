@@ -94,7 +94,7 @@ add_action( 'widgets_init', 'todo_widgets_init' );
  * Enqueue scripts and styles.
  */
 function todo_scripts() {
-	$theme_version = "1.5.1";
+	$theme_version = "2.0.0";
 
 	/*-----------------------------------------------------------------------------------*/
 	/* Encue the Scripts for main CSS */
