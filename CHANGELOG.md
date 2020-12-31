@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+- Use CSS variables and enable Dark mode
+
 ## 1.5.0
 
 - Prettify code.

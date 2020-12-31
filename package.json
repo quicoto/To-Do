@@ -1,13 +1,13 @@
 {
   "name": "to-do",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "To Do WordPress Theme",
   "author": "Ricard Torres",
   "license": "GPL-2.0-or-later",
   "scripts": {
     "build": "NODE_ENV=production run-s format:* lint:js build:*",
     "build:css": "run-s css:precompile css:autoprefix css:minify",
-    "build:js": "webpack js/main.js -o scripts.min.js --config webpack.config.js",
+    "build:js": "webpack --config webpack.config.js",
     "lint:js": "eslint 'js/*.js' --fix",
     "css:autoprefix": "postcss --use autoprefixer --no-map --replace style.css",
     "css:precompile": "node-sass --omitSourceMapUrl true style.scss style.css",
@@ -18,22 +18,24 @@
     "format:scss": "prettier --write ./style.scss"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
+    "@webpack-cli/migrate": "^1.1.2",
+    "autoprefixer": "^10.1.0",
     "clean-css-cli": "^4.3.0",
-    "eslint": "^7.9.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "node-sass": "4.14.1",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "node-sass": "5.0.0",
     "npm-run-all": "4.1.5",
-    "onchange": "7.0.2",
-    "postcss-cli": "7.1.2",
-    "stylelint": "13.7.1",
+    "onchange": "7.1.0",
+    "postcss": "^8.2.2",
+    "postcss-cli": "8.3.1",
+    "stylelint": "13.8.0",
     "stylelint-config-standard": "20.0.0",
     "uglify-es": "^3.3.9",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
   },
   "dependencies": {
-    "prettier": "^2.1.1"
+    "prettier": "^2.2.1"
   }
 }

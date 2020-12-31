@@ -12,36 +12,32 @@ License URI: LICENSE
 Text Domain: todo
 */
 
-$light_green: #28a74547;
-$green: #1c8033;
-$dark_green: #125321;
-$light-gray: #f8f9fa;
-$blue: #0458b3;
-$dark_blue: #002e5e;
-$red: #dc3545;
-
 :root {
-  --blue: $blue;
+  --blue: #0458b3;
+  --blue-dark: #002e5e;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
-  --red: $red;
+  --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffc107;
-  --green: $green;
+  --green: #1c8033;
+  --green-light: #28a74547;
+  --green-dark: #125321;
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
   --gray: #6c757d;
+  --gray-light: #f8f9fa;
   --gray-dark: #343a40;
-  --primary: $blue;
+  --primary: var(--blue);
   --secondary: #6c757d;
-  --success: $green;
+  --success: var(--green);
   --info: #17a2b8;
   --warning: #ffc107;
-  --danger: $red;
+  --danger: var(--red);
   --light: #f8f9fa;
-  --dark: #343a40;
+  --dark: #212529;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -53,6 +49,7 @@ $red: #dc3545;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
+
 *,
 ::after,
 ::before {
@@ -85,9 +82,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: var(--dark);
   text-align: left;
-  background-color: #fff;
+  background-color: var(--white);
 }
 h1,
 h2,
@@ -106,7 +103,7 @@ small {
   font-size: 80%;
 }
 a {
-  color: $blue;
+  color: var(--blue);
   text-decoration: none;
   background-color: transparent;
 }
@@ -404,7 +401,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #212529;
+  color: var(--dark);
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -421,7 +418,7 @@ textarea.form-control {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .btn:hover {
-  color: #212529;
+  color: var(--dark);
   text-decoration: none;
 }
 .btn.focus,
@@ -438,26 +435,26 @@ textarea.form-control {
 }
 .btn-primary {
   color: #fff;
-  background-color: $blue;
-  border-color: $blue;
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: $dark_blue;
+  background-color: var(--blue-dark);
   border-color: #0062cc;
 }
 .btn-primary.focus,
 .btn-primary:focus {
   color: #fff;
-  background-color: $dark_blue;
+  background-color: var(--blue-dark);
   border-color: #0062cc;
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #fff;
-  background-color: $blue;
-  border-color: $blue;
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
@@ -473,22 +470,22 @@ textarea.form-control {
 }
 .btn-success {
   color: #fff;
-  background-color: $green;
+  background-color: var(--green);
   border-color: #28a745;
 }
 .btn-success:hover {
   color: #fff;
-  background-color: $dark_green;
+  background-color: var(--green-dark);
   border-color: #28a745;
 }
 .btn-outline-primary {
-  color: $blue;
-  border-color: $blue;
+  color: var(--blue);
+  border-color: var(--blue);
 }
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: $blue;
-  border-color: $blue;
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 .btn-outline-primary.focus,
 .btn-outline-primary:focus {
@@ -498,8 +495,8 @@ textarea.form-control {
 .btn-outline-primary:not(:disabled):not(.disabled):active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: $blue;
-  border-color: $blue;
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
@@ -514,7 +511,7 @@ textarea.form-control {
   background-color: #f8f9fa !important;
 }
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: var(--gray-dark) !important;
 }
 .d-flex {
   display: -ms-flexbox !important;
@@ -582,26 +579,26 @@ h3 {
 
   svg path,
   svg rect {
-    fill: $dark_blue;
+    fill: var(--blue-dark);
   }
 }
 
 @keyframes bgColor {
   from {
-    background-color: $light-gray;
+    background-color: var(--gray-light);
   }
 
   to {
-    background-color: $light_green;
+    background-color: var(--green-light);
   }
 }
 
 .todo__counterTodo {
-  color: $red;
+  color: var(--red);
 }
 
 .todo__counterTotal {
-  color: $green;
+  color: var(--green);
 }
 
 .todo__post {
@@ -634,7 +631,7 @@ h3 {
   }
 
   &--done {
-    background-color: $light_green;
+    background-color: var(--green-light);
 
     .todo__postActions {
       display: none;
@@ -643,5 +640,19 @@ h3 {
     .todo__postContent {
       text-decoration: line-through;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: var(--dark);
+  }
+
+  body {
+    color: var(--gray-light);
+  }
+
+  .bg-light {
+    background-color: var(--gray-dark) !important;
   }
 }
