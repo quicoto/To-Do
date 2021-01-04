@@ -67,7 +67,7 @@ if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 		$output->posts = $posts;
 
 		$count_posts = wp_count_posts();
-		$output->total = $count_posts->publish;
+		$output->total = intval($count_posts->publish);
 
 		die(json_encode($output));
 	}
