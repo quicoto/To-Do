@@ -129,31 +129,31 @@ import { CLASSES, SELECTORS, DATA_ATTRIBUTES } from './config';
 
   function _renderPosts() {
     let postsHTML = '';
-    const data = new FormData();
+    const formData = new FormData();
 
     _.counterTodo = 0;
     _$.loading.removeAttribute('hidden');
 
-    data.append('action', 'todo_all_posts');
-    data.append('nonce', todo_main_ajax.nonce);
+    formData.append('action', 'todo_all_posts');
+    formData.append('nonce', todo_main_ajax.nonce);
 
     fetch(todo_main_ajax.ajax_url, {
       method: 'POST',
       credentials: 'same-origin',
-      body: data,
+      body: formData,
     })
       .then((response) => response.json())
-      .then((posts) => {
-        _redirectIfNotLoggedIn(posts);
+      .then((data) => {
+        _redirectIfNotLoggedIn(data.posts);
 
-        posts.forEach((post) => {
+        data.posts.forEach((post) => {
           postsHTML += templates.post(post, _$.loading);
           if (!post.todo__done) {
             _.counterTodo += 1;
           }
         });
 
-        _.counterTotal = posts.length;
+        _.counterTotal = data.total;
         _updateCounter();
         _$.postsContainer.innerHTML = postsHTML;
         _$.loading.setAttribute('hidden', true);

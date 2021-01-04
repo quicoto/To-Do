@@ -63,7 +63,13 @@ if  ( ! function_exists( 'todo_all_posts_callback' ) ):
 			}
 		}
 
-		die(json_encode($posts));
+		$output = new stdClass();
+		$output->posts = $posts;
+
+		$count_posts = wp_count_posts();
+		$output->total = $count_posts->publish;
+
+		die(json_encode($output));
 	}
 
 	add_action( 'wp_ajax_todo_all_posts', 'todo_all_posts_callback' );
